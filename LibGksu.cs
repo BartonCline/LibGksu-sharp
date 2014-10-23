@@ -92,6 +92,15 @@ namespace LibGksu
 			return success;
 		}
 
+		/// <summary>
+		/// Asks the password using the gksu UI.
+		/// </summary>
+		/// <returns>The password in clear text.</returns>
+		/// <exception cref="GLib.GException">Conveys messages from the native library.</exception>
+		public static string AskPassword()
+		{
+			return gksu_ask_password();
+		}
 
 		/**
 		 * gksu_run_fuller:
@@ -304,6 +313,24 @@ namespace LibGksu
 				return success;
 			}
 
+			/// <summary>
+			/// Asks the password full.
+			/// </summary>
+			/// <returns>The password full in clear text.</returns>
+			/// <param name="prompt">Prompt.</param>
+			/// <exception cref="GLib.GException">Conveys messages from the native library.</exception>
+			public string AskPasswordFull(string prompt)
+			{
+				IntPtr gError;
+				var passwd = gksu_ask_password_full(_Handle, prompt, out gError);
+
+				if (gError != IntPtr.Zero) {
+					var err = new GLib.GException(gError);
+					throw err;
+				}
+				return passwd;
+			}
+
 		}
 
 
@@ -324,6 +351,14 @@ namespace LibGksu
 		[CLSCompliant(false)]
 		[DllImport("libgksu2.so", SetLastError = true)]
 		private static extern bool gksu_sudo(String command, out IntPtr gError);
+
+		[CLSCompliant(false)]
+		[DllImport("libgksu2.so", SetLastError = true)]
+		private static extern string gksu_ask_password();
+
+		[CLSCompliant(false)]
+		[DllImport("libgksu2.so", SetLastError = true)]
+		private static extern string gksu_ask_password_full(IntPtr context, String prompt, out IntPtr gError);
 
 		[CLSCompliant(false)]
 		[DllImport("libgksu2.so", SetLastError = true)]
