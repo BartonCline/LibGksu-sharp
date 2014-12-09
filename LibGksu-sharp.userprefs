@@ -1,0 +1,14 @@
+﻿<Properties GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="LibGksu.cs">
+    <Files>
+      <File FileName="LibGksu.cs" Line="43" Column="3" />
+      <File FileName="unit-test/Program.cs" Line="36" Column="4" />
+      <File FileName="../vmdk-raw-parts-ui/VmdkRawPartsLaunch/Program.cs" Line="51" Column="39" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
